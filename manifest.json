@@ -1,0 +1,43 @@
+{
+    "manifest_version": 3,
+    "name": "MailGenie",
+    "description": "A Chrome extension for generating email replies",
+    "version": "1.0",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "host_permissions": [
+        "*://mail.google.com/*",
+        "http://localhost:8080/*"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "icons/*"
+            ],
+            "matches": [
+                "*://mail.google.com/*"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Email Reply Generator",
+        "default_icon": "icons/image.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://mail.google.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "content.css"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}
